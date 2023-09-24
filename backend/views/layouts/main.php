@@ -11,6 +11,13 @@ use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
+
+$alertJs = <<< JS
+     $(".alert").animate({opacity: 1.0}, 5000).fadeOut("slow");
+JS;
+
+$this->registerJs($alertJs, yii\web\View::POS_READY);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,7 +42,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Яблоки', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
